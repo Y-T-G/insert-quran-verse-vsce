@@ -36,12 +36,12 @@
         "Y-T-G.insert-quran-verse.prefix": {
           "type": "string",
           "default": "",
-          "description": "Define a prefix to be added before the verse"
+          "description": "Define a prefix to be added before the verse."
         },
         "Y-T-G.insert-quran-verse.suffix": {
           "type": "string",
           "default": "",
-          "description": "Define a suffix to be added after the verse"
+          "description": "Define a suffix to be added after the verse."
         }
       }
     }
