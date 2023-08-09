@@ -28,7 +28,7 @@ function findVerseByChapterAndVerse(chapter: number, verse: number) {
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand('insert-quran-verse.searchQuran', async () => {
-    const searchText = await vscode.window.showInputBox({ prompt: 'Enter Arabic word or phrase to search' });
+    const searchText = await vscode.window.showInputBox({ prompt: 'Enter <chapter>:<verse> or Arabic word/phrase to search' });
 
     if (searchText) {
 
