@@ -81,13 +81,9 @@ export function activate(context: vscode.ExtensionContext) {
             const prefix = config.get<string>('prefix') || '';
             const suffix = config.get<string>('suffix') || '';
 
-            // Replace \n with an actual line break
-            const normalizedPrefix = prefix.replace(/\\n/g, '\n');
-            const normalizedSuffix = suffix.replace(/\\n/g, '\n');
-
-            // Replace \t with tabs
-            const normalizedPrefix = prefix.replace(/\\t/g, '\t');
-            const normalizedSuffix = suffix.replace(/\\t/g, '\t');
+            // Replace \n with an actual line break and \t with tabs
+            let normalizedPrefix = prefix.replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+            let normalizedSuffix = suffix.replace(/\\n/g, '\n').replace(/\\t/g, '\t');
 
             const textToInsert = `${normalizedPrefix}${selectedVerse.description}${normalizedSuffix}`;
 
