@@ -1,13 +1,13 @@
 # Insert Quran Verse Extension for VS Code
 
-Insert Quran Verse allows you to easily use partial search to find the verse(s) you are looking for and allows you to insert them into your document. It is based on the InDesign [quran-plugin](https://www.sadeea.de/quran-plugin) by Mohammad Sadee.
+Insert Quran Verse allows you to easily use `chapter:verse` search or partial search to find the verse(s) you are looking for and allows you to insert them into your document. It is based on the InDesign [quran-plugin](https://www.sadeea.de/quran-plugin) by Mohammad Sadee.
 
 ## Usage
 
 ![How To](images/insert-quran-verse-demo.gif)
 
 1. To insert a verse, open the Command Pallete and search for "Insert Quran verse" and press enter.
-2. Then write the word or portion of a verse to be searched and press enter.
+2. Type the `chapter:verse`, word or portion of a verse to be searched and press enter to search.
 3. Select the verse you want to insert and press enter again to insert.
 
 ## Extension Settings
