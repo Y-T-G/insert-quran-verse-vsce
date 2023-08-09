@@ -7,7 +7,7 @@
   "publisher": "Y-T-G",
   "license": "MIT",
   "homepage": "https://github.com/Y-T-G/insert-quran-verse-vsce",
-  "description": "Searches for a word in all the verse and gives you the ability to quickly insert one of the found verse.",
+  "description": "Search for a verse and quickly insert one of the found verses.",
   "version": "0.0.1",
   "repository": {
     "type": "git",
