@@ -52,7 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (selectedVerse) {
           const activeEditor = vscode.window.activeTextEditor;
           if (activeEditor) {
-            const config = vscode.workspace.getConfiguration('insert-quran-verse');
+            const config = vscode.workspace.getConfiguration('Y-T-G.insert-quran-verse');
             const prefix = config.get<string>('prefix') || '';
             const suffix = config.get<string>('suffix') || '';
 
