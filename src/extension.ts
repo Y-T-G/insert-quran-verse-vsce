@@ -53,10 +53,14 @@ export function activate(context: vscode.ExtensionContext) {
           const activeEditor = vscode.window.activeTextEditor;
           if (activeEditor) {
             const config = vscode.workspace.getConfiguration('insert-quran-verse');
-            const prefix = config.get('prefix') || '';
-            const suffix = config.get('suffix') || '';
+            const prefix = config.get<string>('prefix') || '';
+            const suffix = config.get<string>('suffix') || '';
 
-            const textToInsert = `${prefix}${selectedVerse.description}${suffix}`;
+			// Replace \n with an actual line break
+			const normalizedPrefix = prefix.replace(/\\n/g, '\n');
+			const normalizedSuffix = suffix.replace(/\\n/g, '\n');
+
+			const textToInsert = `${normalizedPrefix}${selectedVerse.description}${normalizedSuffix}`;
 
             activeEditor.edit((editBuilder: vscode.TextEditorEdit) => {
               editBuilder.insert(activeEditor.selection.active, textToInsert);
