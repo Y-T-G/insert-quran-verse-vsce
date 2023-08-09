@@ -4,7 +4,7 @@
   "author": {
     "name": "Mohammed Yasin",
     "email": "yaseensinbox@gmail.com"},
-  "publisher": "Mohammed Yasin",
+  "publisher": "Y-T-G",
   "license": "MIT",
   "homepage": "https://github.com/Y-T-G/insert-quran-verse-vsce",
   "description": "Searches for a word in all the verse and gives you the ability to quickly insert one of the found verse.",
@@ -33,12 +33,12 @@
       "type": "object",
       "title": "Preprocessing",
       "properties": {
-        "insert-quran-verse.prefix": {
+        "Y-T-G.insert-quran-verse.prefix": {
           "type": "string",
           "default": "",
           "description": "Define a prefix to be added before the verse"
         },
-        "insert-quran-verse.suffix": {
+        "Y-T-G.insert-quran-verse.suffix": {
           "type": "string",
           "default": "",
           "description": "Define a suffix to be added after the verse"
