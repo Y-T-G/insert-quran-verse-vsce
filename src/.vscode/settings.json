@@ -1,0 +1,10 @@
+{
+    "insert-quran-verse.prefix": {
+        "type": "string",
+        "default": ":::"
+    },
+    "insert-quran-verse.suffix": {
+        "type": "string",
+        "default": ":::"
+    }
+}
