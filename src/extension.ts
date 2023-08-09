@@ -22,19 +22,42 @@ function removeDiacritics(text: string): string {
   return text;
 }
 
+function findVerseByChapterAndVerse(chapter: number, verse: number) {
+  return quranVerses.find((v: { sora: number; aya_no: number }) => v.sora === chapter && v.aya_no === verse);
+}
+
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand('insert-quran-verse.searchQuran', async () => {
     const searchText = await vscode.window.showInputBox({ prompt: 'Enter Arabic word or phrase to search' });
-    if (searchText) {
-      let results = quranVerses.filter((verse: { id: number; aya_text_emlaey: string; aya_text: string }) =>
-        verse.aya_text_emlaey.includes(removeDiacritics(searchText))
-      );
 
-      // fallback attempt with diacritics
-      if (results.length == 0) {
-        results = quranVerses.filter((verse: { id: number; aya_text: string }) =>
-          verse.aya_text.includes(searchText)
+    if (searchText) {
+
+      let results: any[] = [];
+
+      // check if searchText is in the chapter:verse format
+      const chapterVersePattern = /^(\d+):(\d+)$/;
+      const chapterVerseMatch = searchText.match(chapterVersePattern);
+
+      if (chapterVerseMatch) { // parsing chapter:verse format
+        const chapter = parseInt(chapterVerseMatch[1]);
+        const verse = parseInt(chapterVerseMatch[2]);
+        const foundVerse = findVerseByChapterAndVerse(chapter, verse);
+        if (foundVerse) {
+          results.push(foundVerse);
+        }
+      } else {  // using text search
+
+        // attempt 1: with no diacritics
+        results = quranVerses.filter((verse: { id: number; aya_text_emlaey: string; aya_text: string }) =>
+          verse.aya_text_emlaey.includes(removeDiacritics(searchText))
         );
+
+        // attempt 2: fallback attempt with diacritics
+        if (results.length == 0) {
+          results = quranVerses.filter((verse: { id: number; aya_text: string }) =>
+            verse.aya_text.includes(searchText)
+          );
+        }
       }
 
       if (results.length > 0) {
@@ -52,6 +75,8 @@ export function activate(context: vscode.ExtensionContext) {
         if (selectedVerse) {
           const activeEditor = vscode.window.activeTextEditor;
           if (activeEditor) {
+
+            // add prefix and suffix from config if present
             const config = vscode.workspace.getConfiguration('Y-T-G.insert-quran-verse');
             const prefix = config.get<string>('prefix') || '';
             const suffix = config.get<string>('suffix') || '';
