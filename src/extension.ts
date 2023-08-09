@@ -85,6 +85,10 @@ export function activate(context: vscode.ExtensionContext) {
             const normalizedPrefix = prefix.replace(/\\n/g, '\n');
             const normalizedSuffix = suffix.replace(/\\n/g, '\n');
 
+            // Replace \t with tabs
+            const normalizedPrefix = prefix.replace(/\\t/g, '\t');
+            const normalizedSuffix = suffix.replace(/\\t/g, '\t');
+
             const textToInsert = `${normalizedPrefix}${selectedVerse.description}${normalizedSuffix}`;
 
             activeEditor.edit((editBuilder: vscode.TextEditorEdit) => {
